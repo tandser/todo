@@ -1,5 +1,7 @@
 package ru.tandser.todo.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.google.common.base.MoreObjects;
 
 import javax.persistence.*;
@@ -34,6 +36,8 @@ public class Note extends AbstractEntity {
         this.done = done;
     }
 
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     public User getUser() {

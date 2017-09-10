@@ -1,5 +1,7 @@
 package ru.tandser.todo.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.google.common.base.MoreObjects;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
@@ -75,6 +77,8 @@ public class User extends AbstractEntity {
         this.role = role;
     }
 
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    @JsonManagedReference
     @OneToMany(mappedBy = "user")
     @OrderBy("created DESC")
     public List<Note> getNotes() {

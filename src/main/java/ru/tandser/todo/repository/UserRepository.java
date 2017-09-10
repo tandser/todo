@@ -4,7 +4,7 @@ import ru.tandser.todo.domain.User;
 
 import java.util.List;
 
-public interface UsersRepository {
+public interface UserRepository {
 
     User get(int id);
 

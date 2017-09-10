@@ -10,7 +10,7 @@ import ru.tandser.todo.domain.User;
 import java.util.List;
 
 @Transactional(readOnly = true)
-public interface UsersJpaRepository extends JpaRepository<User, Integer> {
+public interface UserJpaRepository extends JpaRepository<User, Integer> {
 
     User findOneByEmail(String email);
 

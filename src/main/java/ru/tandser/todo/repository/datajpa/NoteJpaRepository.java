@@ -9,7 +9,7 @@ import ru.tandser.todo.domain.Note;
 import java.util.List;
 
 @Transactional(readOnly = true)
-public interface NotesJpaRepository extends JpaRepository<Note, Integer> {
+public interface NoteJpaRepository extends JpaRepository<Note, Integer> {
 
     Note findOneByIdAndUserId(int id, int userId);
 

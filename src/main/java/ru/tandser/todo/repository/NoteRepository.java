@@ -4,7 +4,7 @@ import ru.tandser.todo.domain.Note;
 
 import java.util.List;
 
-public interface NotesRepository {
+public interface NoteRepository {
 
     Note get(int id, int userId);
 

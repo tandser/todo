@@ -4,43 +4,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.tandser.todo.domain.User;
-import ru.tandser.todo.repository.UsersRepository;
+import ru.tandser.todo.repository.UserRepository;
 
 import java.util.List;
 
 @Repository
-public class UsersRepositoryImpl implements UsersRepository {
+public class UserRepositoryImpl implements UserRepository {
 
-    private UsersJpaRepository usersJpaRepository;
+    private UserJpaRepository userJpaRepository;
 
     @Autowired
-    public void setUsersJpaRepository(UsersJpaRepository usersJpaRepository) {
-        this.usersJpaRepository = usersJpaRepository;
+    public void setUserJpaRepository(UserJpaRepository userJpaRepository) {
+        this.userJpaRepository = userJpaRepository;
     }
 
     @Override
     public User get(int id) {
-        return usersJpaRepository.findOne(id);
+        return userJpaRepository.findOne(id);
     }
 
     @Override
     public List<User> getAll() {
-        return usersJpaRepository.findAll();
+        return userJpaRepository.findAll();
     }
 
     @Override
     public User getByEmail(String email) {
-        return usersJpaRepository.findOneByEmail(email);
+        return userJpaRepository.findOneByEmail(email);
     }
 
     @Override
     public User getWithNotes(int id) {
-        return usersJpaRepository.findOneWithNotes(id);
+        return userJpaRepository.findOneWithNotes(id);
     }
 
     @Override
     public User remove(int id) {
-        List<User> removed = usersJpaRepository.removeById(id);
+        List<User> removed = userJpaRepository.removeById(id);
         return !removed.isEmpty() ? removed.get(0) : null;
     }
 
@@ -51,11 +51,11 @@ public class UsersRepositoryImpl implements UsersRepository {
             return null;
         }
 
-        return usersJpaRepository.save(user);
+        return userJpaRepository.save(user);
     }
 
     @Override
     public int disabled(int id, boolean state) {
-        return usersJpaRepository.setDisabled(id, state);
+        return userJpaRepository.setDisabled(id, state);
     }
 }

@@ -4,49 +4,49 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.tandser.todo.domain.Note;
-import ru.tandser.todo.repository.NotesRepository;
+import ru.tandser.todo.repository.NoteRepository;
 
 import java.util.List;
 
 @Repository
-public class NotesRepositoryImpl implements NotesRepository {
+public class NoteRepositoryImpl implements NoteRepository {
 
-    private NotesJpaRepository notesJpaRepository;
-    private UsersJpaRepository usersJpaRepository;
+    private NoteJpaRepository noteJpaRepository;
+    private UserJpaRepository userJpaRepository;
 
     @Autowired
-    public void setNotesJpaRepository(NotesJpaRepository notesJpaRepository) {
-        this.notesJpaRepository = notesJpaRepository;
+    public void setNoteJpaRepository(NoteJpaRepository noteJpaRepository) {
+        this.noteJpaRepository = noteJpaRepository;
     }
 
     @Autowired
-    public void setUsersJpaRepository(UsersJpaRepository usersJpaRepository) {
-        this.usersJpaRepository = usersJpaRepository;
+    public void setUserJpaRepository(UserJpaRepository userJpaRepository) {
+        this.userJpaRepository = userJpaRepository;
     }
 
     @Override
     public Note get(int id, int userId) {
-        return notesJpaRepository.findOneByIdAndUserId(id, userId);
+        return noteJpaRepository.findOneByIdAndUserId(id, userId);
     }
 
     @Transactional(readOnly = true)
     @Override
     public List<Note> getAll(int userId) {
-        return usersJpaRepository.exists(userId)
-                ? notesJpaRepository.findAllByUserId(userId)
+        return userJpaRepository.exists(userId)
+                ? noteJpaRepository.findAllByUserId(userId)
                 : null;
     }
 
     @Override
     public Note remove(int id, int userId) {
-        List<Note> removed = notesJpaRepository.removeByIdAndUserId(id, userId);
+        List<Note> removed = noteJpaRepository.removeByIdAndUserId(id, userId);
         return !removed.isEmpty() ? removed.get(0) : null;
     }
 
     @Transactional
     @Override
     public Note put(Note note, int userId) {
-        if (!usersJpaRepository.exists(userId)) {
+        if (!userJpaRepository.exists(userId)) {
             return null;
         }
 
@@ -54,13 +54,13 @@ public class NotesRepositoryImpl implements NotesRepository {
             return null;
         }
 
-        note.setUser(usersJpaRepository.getOne(userId));
+        note.setUser(userJpaRepository.getOne(userId));
 
-        return notesJpaRepository.save(note);
+        return noteJpaRepository.save(note);
     }
 
     @Override
     public int done(int id, boolean state, int userId) {
-        return notesJpaRepository.setDone(id, state, userId);
+        return noteJpaRepository.setDone(id, state, userId);
     }
 }
