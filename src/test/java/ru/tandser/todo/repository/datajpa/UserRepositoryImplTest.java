@@ -82,9 +82,9 @@ public class UserRepositoryImplTest extends AbstractRepositoryTest {
 
     @Test
     public void testDisabled() {
-        assertEquals(0, userRepository.disabled(nonExistentUser.getId(), true));
+        assertEquals(0, userRepository.toggle(nonExistentUser.getId(), true));
 
-        assertEquals(1, userRepository.disabled(user.getId(), true));
+        assertEquals(1, userRepository.toggle(user.getId(), true));
         assertTrue(userRepository.get(user.getId()).getDisabled());
     }
 

@@ -14,5 +14,5 @@ public interface NoteRepository {
 
     Note put(Note note, int userId);
 
-    int done(int id, boolean state, int userId);
+    int toggle(int id, boolean state, int userId);
 }

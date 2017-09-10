@@ -60,7 +60,7 @@ public class NoteRepositoryImpl implements NoteRepository {
     }
 
     @Override
-    public int done(int id, boolean state, int userId) {
+    public int toggle(int id, boolean state, int userId) {
         return noteJpaRepository.setDone(id, state, userId);
     }
 }

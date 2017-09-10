@@ -55,7 +55,7 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public int disabled(int id, boolean state) {
+    public int toggle(int id, boolean state) {
         return userJpaRepository.setDisabled(id, state);
     }
 }

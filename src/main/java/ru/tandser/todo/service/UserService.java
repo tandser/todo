@@ -1,10 +1,10 @@
-package ru.tandser.todo.repository;
+package ru.tandser.todo.service;
 
 import ru.tandser.todo.domain.User;
 
 import java.util.List;
 
-public interface UserRepository {
+public interface UserService {
 
     User get(int id);
 
@@ -14,9 +14,11 @@ public interface UserRepository {
 
     User getWithNotes(int id);
 
-    User remove(int id);
+    void remove(int id);
 
-    User put(User user);
+    User save(User user);
 
-    int toggle(int id, boolean state);
+    void update(User user);
+
+
 }

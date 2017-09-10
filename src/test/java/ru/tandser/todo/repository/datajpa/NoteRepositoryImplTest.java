@@ -67,10 +67,10 @@ public class NoteRepositoryImplTest extends AbstractRepositoryTest {
 
     @Test
     public void testDone() {
-        assertEquals(0, noteRepository.done(existingNote.getId(),    true, nonExistentUser.getId()));
-        assertEquals(0, noteRepository.done(nonExistentNote.getId(), true, user.getId()));
+        assertEquals(0, noteRepository.toggle(existingNote.getId(),    true, nonExistentUser.getId()));
+        assertEquals(0, noteRepository.toggle(nonExistentNote.getId(), true, user.getId()));
 
-        assertEquals(1, noteRepository.done(existingNote.getId(), true, user.getId()));
+        assertEquals(1, noteRepository.toggle(existingNote.getId(), true, user.getId()));
         assertTrue(noteRepository.get(existingNote.getId(), user.getId()).getDone());
     }
 
