@@ -1,0 +1,17 @@
+[
+  {
+    "id"             : 1,
+    "name"           : "Lynn Douglas",
+    "email"          : "l.douglas@gmail.com",
+    "password"       : "Mr01LRc",
+    "role"           : "ADMIN"
+  },
+
+  {
+    "id"             : 2,
+    "name"           : "Scott Welch",
+    "email"          : "s.welch@gmail.com",
+    "password"       : "Izhyw29",
+    "role"           : "USER"
+  }
+]
