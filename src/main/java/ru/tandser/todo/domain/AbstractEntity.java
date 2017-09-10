@@ -2,6 +2,8 @@ package ru.tandser.todo.domain;
 
 import com.google.common.base.MoreObjects;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
@@ -29,8 +31,8 @@ public abstract class AbstractEntity implements Persistable<Integer> {
         this.id = id;
     }
 
-    @NotNull
-    @Column(name = "created")
+    @Column(name = "created", updatable = false)
+    @CreationTimestamp
     public LocalDateTime getCreated() {
         return created;
     }
@@ -40,6 +42,7 @@ public abstract class AbstractEntity implements Persistable<Integer> {
     }
 
     @Column(name = "updated")
+    @UpdateTimestamp
     public LocalDateTime getUpdated() {
         return updated;
     }

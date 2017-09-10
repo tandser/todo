@@ -13,6 +13,14 @@ public class TestUserData {
 
     public static User admin;
     public static User user;
+    public static User newUser;
+    public static User updatedUser;
+    public static User nonExistentUser;
+    public static User conflictingUser;
+    public static User duplicateUser;
+    public static User invalidNameUser;
+    public static User invalidEmailUser;
+    public static User invalidPasswordUser;
 
     public static final Matcher<User> USER_MATCHER = new Matcher<>(User.class, (expected, actual) ->
             expected == actual || (Objects.equals(expected.getName(),     actual.getName())  &&
@@ -25,7 +33,15 @@ public class TestUserData {
     public static void loadMocks() throws FileNotFoundException {
         Iterator<User> mocks = JsonConverter.fromJsonToList(ResourceUtils.getFile("classpath:mocks/users.json"), User.class).iterator();
 
-        admin = mocks.next();
-        user  = mocks.next();
+        admin               = mocks.next();
+        user                = mocks.next();
+        newUser             = mocks.next();
+        updatedUser         = mocks.next();
+        nonExistentUser     = mocks.next();
+        conflictingUser     = mocks.next();
+        duplicateUser       = mocks.next();
+        invalidNameUser     = mocks.next();
+        invalidEmailUser    = mocks.next();
+        invalidPasswordUser = mocks.next();
     }
 }

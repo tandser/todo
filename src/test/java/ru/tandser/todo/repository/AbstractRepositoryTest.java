@@ -1,5 +1,6 @@
 package ru.tandser.todo.repository;
 
+import org.hamcrest.CoreMatchers;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
@@ -13,6 +14,10 @@ import ru.tandser.todo.TestUserData;
 
 import java.io.FileNotFoundException;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
+
 @ActiveProfiles("localhost")
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring/repository.xml")
@@ -25,5 +30,24 @@ public abstract class AbstractRepositoryTest {
     @BeforeClass
     public static void beforeClass() throws FileNotFoundException {
         TestUserData.loadMocks();
+    }
+
+    public static <T extends Throwable> void validateRootCause(Runnable task, Class<T> exceptionType) {
+        try {
+            task.run();
+            fail("Expected " + exceptionType.getName());
+        } catch (Exception exc) {
+            assertThat(getRootCause(exc), instanceOf(exceptionType));
+        }
+    }
+
+    private static Throwable getRootCause(Throwable exc) {
+        Throwable cause, result = exc;
+
+        while ((cause = result.getCause()) != null && (result != cause)) {
+            result = cause;
+        }
+
+        return result;
     }
 }

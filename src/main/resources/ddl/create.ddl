@@ -15,7 +15,7 @@ CREATE TABLE users (
   password VARCHAR   NOT NULL,
   role     VARCHAR   NOT NULL,
   disabled BOOLEAN   NOT NULL DEFAULT FALSE,
-  created  TIMESTAMP NOT NULL DEFAULT now(),
+  created  TIMESTAMP NOT NULL,
   updated  TIMESTAMP,
   version  INTEGER   NOT NULL DEFAULT 0
 );

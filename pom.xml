@@ -107,6 +107,14 @@
             <version>6.0.2.Final</version>
         </dependency>
 
+        <!-- org.glassfish -->
+
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>3.0.1-b08</version>
+        </dependency>
+
         <!-- org.apache.tomcat -->
 
         <dependency>
