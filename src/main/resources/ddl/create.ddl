@@ -36,4 +36,4 @@ CREATE TABLE notes (
   version  INTEGER   NOT NULL DEFAULT 0
 );
 
-CREATE UNIQUE INDEX unique_notes ON notes (user_id);
+CREATE UNIQUE INDEX unique_notes ON notes (created, user_id);

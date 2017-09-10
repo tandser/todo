@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/jdbc
+                           http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx.xsd
+                           http://www.springframework.org/schema/data/jpa
+                           http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+    <context:component-scan base-package="ru.tandser.todo.repository"/>
+
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+        </property>
+        <property name="packagesToScan" value="ru.tandser.todo.domain"/>
+        <property name="jpaPropertyMap">
+            <map>
+                <entry key="hibernate.dialect"    value="${hibernate.dialect}"/>
+                <entry key="hibernate.show_sql"   value="${hibernate.show_sql}"/>
+                <entry key="hibernate.format_sql" value="${hibernate.format_sql}"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
+    <tx:annotation-driven/>
+
+    <jpa:repositories base-package="ru.tandser.todo.repository.datajpa"
+                      entity-manager-factory-ref="entityManagerFactory"
+                      transaction-manager-ref="transactionManager"/>
+
+    <beans profile="localhost">
+
+        <context:property-placeholder location="classpath:properties/localhost.properties"/>
+
+        <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource">
+            <property name="driverClassName" value="${localhost.driverClassName}"/>
+            <property name="url"             value="${localhost.url}"/>
+            <property name="username"        value="${localhost.username}"/>
+            <property name="password"        value="${localhost.password}"/>
+        </bean>
+
+        <jdbc:initialize-database data-source="dataSource">
+            <jdbc:script location="classpath:ddl/create.ddl"/>
+        </jdbc:initialize-database>
+
+    </beans>
+
+</beans>
