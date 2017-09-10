@@ -1,0 +1,55 @@
+[
+  {
+    "id"     : 1,
+    "text"   : "text 1 note"
+  },
+
+  {
+    "id"     : 2,
+    "text"   : "text 2 note"
+  },
+
+  {
+    "id"     : 3,
+    "text"   : "text 3 note"
+  },
+
+  {
+    "id"     : 4,
+    "text"   : "text 1 note"
+  },
+
+  {
+    "id"     : 5,
+    "text"   : "text 2 note"
+  },
+
+  {
+    "id"     : 6,
+    "text"   : "text 3 note"
+  },
+
+  {
+    "text"   : "text 4 note"
+  },
+
+  {
+    "id"     : 4,
+    "text"   : "updated text 1 note"
+  },
+
+  {
+    "id"     : 8,
+    "text"   : "text 5 note"
+  },
+
+  {
+    "id"     : 4,
+    "text"   : "updated text 1 note",
+    "version": 1
+  },
+
+  {
+    "text"   : ""
+  }
+]

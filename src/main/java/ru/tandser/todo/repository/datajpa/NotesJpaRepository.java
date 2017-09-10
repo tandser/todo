@@ -20,6 +20,6 @@ public interface NotesJpaRepository extends JpaRepository<Note, Integer> {
 
     @Transactional
     @Modifying
-    @Query("UPDATE Note AS n SET n.done = ?2 WHERE n.id = ?1 AND n.user = ?3")
+    @Query("UPDATE Note AS n SET n.done = ?2 WHERE n.id = ?1 AND n.user.id = ?3")
     int setDone(int id, boolean state, int userId);
 }

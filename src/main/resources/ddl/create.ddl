@@ -31,9 +31,9 @@ CREATE TABLE notes (
   text     VARCHAR   NOT NULL,
   done     BOOLEAN   NOT NULL DEFAULT FALSE,
   user_id  INTEGER   NOT NULL REFERENCES users ON DELETE CASCADE,
-  created  TIMESTAMP NOT NULL DEFAULT now(),
+  created  TIMESTAMP NOT NULL,
   updated  TIMESTAMP,
   version  INTEGER   NOT NULL DEFAULT 0
 );
 
-CREATE UNIQUE INDEX unique_notes ON notes (created, user_id);
+CREATE UNIQUE INDEX unique_notes ON notes (id, user_id);

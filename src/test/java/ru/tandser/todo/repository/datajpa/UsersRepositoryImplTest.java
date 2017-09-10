@@ -11,6 +11,8 @@ import javax.validation.ConstraintViolationException;
 import java.util.Arrays;
 
 import static org.junit.Assert.*;
+import static ru.tandser.todo.TestNoteData.NOTE_MATCHER;
+import static ru.tandser.todo.TestNoteData.userNotes;
 import static ru.tandser.todo.TestUserData.*;
 
 public class UsersRepositoryImplTest extends AbstractRepositoryTest {
@@ -25,8 +27,7 @@ public class UsersRepositoryImplTest extends AbstractRepositoryTest {
     @Test
     public void testGet() {
         assertNull(usersRepository.get(nonExistentUser.getId()));
-        assertTrue(USER_MATCHER.equals(admin, usersRepository.get(admin.getId())));
-        assertTrue(USER_MATCHER.equals(user,  usersRepository.get(user.getId())));
+        assertTrue(USER_MATCHER.equals(user, usersRepository.get(user.getId())));
     }
 
     @Test
@@ -37,20 +38,21 @@ public class UsersRepositoryImplTest extends AbstractRepositoryTest {
     @Test
     public void testGetByEmail() {
         assertNull(usersRepository.getByEmail(nonExistentUser.getEmail()));
-        assertTrue(USER_MATCHER.equals(admin, usersRepository.getByEmail(admin.getEmail())));
-        assertTrue(USER_MATCHER.equals(user,  usersRepository.getByEmail(user.getEmail())));
+        assertTrue(USER_MATCHER.equals(user, usersRepository.getByEmail(user.getEmail())));
     }
 
     @Test
     public void testGetWithNotes() {
-        // TODO: реализовать
+        assertNull(usersRepository.getWithNotes(nonExistentUser.getId()));
+        assertTrue(NOTE_MATCHER.equals(userNotes, usersRepository.getWithNotes(user.getId()).getNotes()));
     }
 
     @Test
     public void testRemove() {
         assertNull(usersRepository.remove(nonExistentUser.getId()));
-        assertTrue(USER_MATCHER.equals(admin, usersRepository.remove(admin.getId())));
-        assertTrue(USER_MATCHER.equals(user,  usersRepository.remove(user.getId())));
+
+        assertTrue(USER_MATCHER.equals(user, usersRepository.remove(user.getId())));
+        assertNull(usersRepository.get(user.getId()));
     }
 
     @Test
@@ -82,11 +84,8 @@ public class UsersRepositoryImplTest extends AbstractRepositoryTest {
     public void testDisabled() {
         assertEquals(0, usersRepository.disabled(nonExistentUser.getId(), true));
 
-        assertEquals(1, usersRepository.disabled(admin.getId(), true));
-        assertTrue(usersRepository.get(admin.getId()).getDisabled());
-
-        assertEquals(1, usersRepository.disabled(admin.getId(), false));
-        assertFalse(usersRepository.get(admin.getId()).getDisabled());
+        assertEquals(1, usersRepository.disabled(user.getId(), true));
+        assertTrue(usersRepository.get(user.getId()).getDisabled());
     }
 
     @Test

@@ -1,13 +1,14 @@
 package ru.tandser.todo;
 
-import org.springframework.util.ResourceUtils;
 import ru.tandser.todo.domain.User;
-import ru.tandser.todo.jackson.JsonConverter;
 import ru.tandser.todo.utils.Matcher;
 
 import java.io.FileNotFoundException;
 import java.util.Iterator;
 import java.util.Objects;
+
+import static org.springframework.util.ResourceUtils.getFile;
+import static ru.tandser.todo.jackson.JsonConverter.fromJsonToList;
 
 public class TestUserData {
 
@@ -31,7 +32,7 @@ public class TestUserData {
     private TestUserData() {}
 
     public static void loadMocks() throws FileNotFoundException {
-        Iterator<User> mocks = JsonConverter.fromJsonToList(ResourceUtils.getFile("classpath:mocks/users.json"), User.class).iterator();
+        Iterator<User> mocks = fromJsonToList(getFile("classpath:mocks/users.json"), User.class).iterator();
 
         admin               = mocks.next();
         user                = mocks.next();

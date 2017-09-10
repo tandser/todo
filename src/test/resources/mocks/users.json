@@ -1,77 +1,77 @@
 [
   {
-    "id"             : 1,
-    "name"           : "Lynn Douglas",
-    "email"          : "l.douglas@gmail.com",
-    "password"       : "Mr01LRc",
-    "role"           : "ADMIN"
+    "id"      : 1,
+    "name"    : "Lynn Douglas",
+    "email"   : "l.douglas@gmail.com",
+    "password": "Mr01LRc",
+    "role"    : "ADMIN"
   },
 
   {
-    "id"             : 2,
-    "name"           : "Scott Welch",
-    "email"          : "s.welch@gmail.com",
-    "password"       : "Izhyw29",
-    "role"           : "USER"
+    "id"      : 2,
+    "name"    : "Scott Welch",
+    "email"   : "s.welch@gmail.com",
+    "password": "Izhyw29",
+    "role"    : "USER"
   },
 
   {
-    "name"           : "Ralph Bass",
-    "email"          : "r.bass@gmail.com",
-    "password"       : "9Mn5Z6x",
-    "role"           : "USER"
+    "name"    : "Ralph Bass",
+    "email"   : "r.bass@gmail.com",
+    "password": "9Mn5Z6x",
+    "role"    : "USER"
   },
 
   {
-    "id"             : 2,
-    "name"           : "Scott Welch",
-    "email"          : "scott.welch@yahoo.com",
-    "password"       : "Izhyw29",
-    "role"           : "USER"
+    "id"      : 2,
+    "name"    : "Scott Welch",
+    "email"   : "scott.welch@yahoo.com",
+    "password": "Izhyw29",
+    "role"    : "USER"
   },
 
   {
-    "id"             : 3,
-    "name"           : "Arnold Shaw",
-    "email"          : "a.shaw@gmail.com",
-    "password"       : "gVw4WrY",
-    "role"           : "USER"
+    "id"      : 3,
+    "name"    : "Arnold Shaw",
+    "email"   : "a.shaw@gmail.com",
+    "password": "gVw4WrY",
+    "role"    : "USER"
   },
 
   {
-    "id"             : 1,
-    "name"           : "Lynn Douglas",
-    "email"          : "l.douglas@gmail.com",
-    "password"       : "bEW9feW",
-    "role"           : "ADMIN",
-    "version"        : 1
+    "id"      : 1,
+    "name"    : "Lynn Douglas",
+    "email"   : "l.douglas@gmail.com",
+    "password": "bEW9feW",
+    "role"    : "ADMIN",
+    "version" : 1
   },
 
   {
-    "name"           : "Scott Welch",
-    "email"          : "s.welch@gmail.com",
-    "password"       : "Y9rpqov",
-    "role"           : "USER"
+    "name"    : "Scott Welch",
+    "email"   : "s.welch@gmail.com",
+    "password": "Y9rpqov",
+    "role"    : "USER"
   },
 
   {
-    "name"           : "",
-    "email"          : "l.jones@gmail.com",
-    "password"       : "uGbn0oU",
-    "role"           : "USER"
+    "name"    : "",
+    "email"   : "l.jones@gmail.com",
+    "password": "uGbn0oU",
+    "role"    : "USER"
   },
 
   {
-    "name"           : "Cary Rhodes",
-    "email"          : "c.rhodesgmail.com",
-    "password"       : "lgZtBlx",
-    "role"           : "USER"
+    "name"    : "Cary Rhodes",
+    "email"   : "c.rhodesgmail.com",
+    "password": "lgZtBlx",
+    "role"    : "USER"
   },
 
   {
-    "name"           : "Nathaniel Perez",
-    "email"          : "n.perez@gmail.com",
-    "password"       : "SyDDH",
-    "role"           : "USER"
+    "name"    : "Nathaniel Perez",
+    "email"   : "n.perez@gmail.com",
+    "password": "SyDDH",
+    "role"    : "USER"
   }
 ]
