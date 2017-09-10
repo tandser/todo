@@ -20,5 +20,5 @@ public interface UserService {
 
     void update(User user);
 
-
+    void toggle(int id, boolean state);
 }
