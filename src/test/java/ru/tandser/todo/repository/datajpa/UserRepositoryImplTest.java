@@ -13,7 +13,7 @@ import java.util.Arrays;
 import static org.junit.Assert.*;
 import static ru.tandser.todo.TestNoteData.NOTE_MATCHER;
 import static ru.tandser.todo.TestNoteData.userNotes;
-import static ru.tandser.todo.TestUserData.*;
+import static ru.tandser.todo.UserTestData.*;
 
 public class UserRepositoryImplTest extends AbstractRepositoryTest {
 

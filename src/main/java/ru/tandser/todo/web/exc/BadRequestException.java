@@ -1,4 +1,4 @@
-package ru.tandser.todo.service.exc;
+package ru.tandser.todo.web.exc;
 
 public class BadRequestException extends RuntimeException {
 

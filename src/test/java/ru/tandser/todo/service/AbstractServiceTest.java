@@ -1,4 +1,4 @@
-package ru.tandser.todo.repository;
+package ru.tandser.todo.service;
 
 import org.junit.BeforeClass;
 import org.junit.Rule;
@@ -14,15 +14,11 @@ import ru.tandser.todo.UserTestData;
 
 import java.io.FileNotFoundException;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
-
 @ActiveProfiles("localhost")
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:spring/repository.xml")
+@ContextConfiguration({"classpath:spring/repository.xml", "classpath:spring/service.xml"})
 @Sql(scripts = "classpath:ddl/insert.ddl", config = @SqlConfig(encoding = "UTF-8"))
-public abstract class AbstractRepositoryTest {
+public abstract class AbstractServiceTest {
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -31,24 +27,5 @@ public abstract class AbstractRepositoryTest {
     public static void beforeClass() throws FileNotFoundException {
         UserTestData.loadMocks();
         TestNoteData.loadMocks();
-    }
-
-    public static <T extends Throwable> void validateRootCause(Runnable task, Class<T> exceptionType) {
-        try {
-            task.run();
-            fail("Expected " + exceptionType.getName());
-        } catch (Exception exc) {
-            assertThat(getRootCause(exc), instanceOf(exceptionType));
-        }
-    }
-
-    private static Throwable getRootCause(Throwable exc) {
-        Throwable cause, result = exc;
-
-        while ((cause = result.getCause()) != null && (result != cause)) {
-            result = cause;
-        }
-
-        return result;
     }
 }

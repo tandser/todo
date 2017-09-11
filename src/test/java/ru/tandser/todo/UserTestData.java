@@ -10,7 +10,7 @@ import java.util.Objects;
 import static org.springframework.util.ResourceUtils.getFile;
 import static ru.tandser.todo.jackson.JsonConverter.fromJsonToList;
 
-public class TestUserData {
+public class UserTestData {
 
     public static User admin;
     public static User user;
@@ -29,7 +29,7 @@ public class TestUserData {
                                    Objects.equals(expected.getRole(),     actual.getRole())  &&
                                    Objects.equals(expected.getDisabled(), actual.getDisabled())));
 
-    private TestUserData() {}
+    private UserTestData() {}
 
     public static void loadMocks() throws FileNotFoundException {
         Iterator<User> mocks = fromJsonToList(getFile("classpath:mocks/users.json"), User.class).iterator();

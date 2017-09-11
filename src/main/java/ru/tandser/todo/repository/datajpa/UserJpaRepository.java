@@ -15,7 +15,7 @@ public interface UserJpaRepository extends JpaRepository<User, Integer> {
     User findOneByEmail(String email);
 
     @EntityGraph(User.WITH_NOTES)
-    @Query("SELECT u FROM User AS u WHERE u.id = ?1")
+    @Query("SELECT user FROM User AS user WHERE user.id = ?1")
     User findOneWithNotes(int id);
 
     @Transactional
@@ -23,6 +23,6 @@ public interface UserJpaRepository extends JpaRepository<User, Integer> {
 
     @Transactional
     @Modifying
-    @Query("UPDATE User AS u SET u.disabled = ?2 WHERE u.id = ?1")
+    @Query("UPDATE User AS user SET user.disabled = ?2 WHERE user.id = ?1")
     int setDisabled(int id, boolean state);
 }

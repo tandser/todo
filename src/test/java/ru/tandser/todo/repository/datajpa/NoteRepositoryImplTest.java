@@ -10,8 +10,8 @@ import javax.validation.ConstraintViolationException;
 
 import static org.junit.Assert.*;
 import static ru.tandser.todo.TestNoteData.*;
-import static ru.tandser.todo.TestUserData.nonExistentUser;
-import static ru.tandser.todo.TestUserData.user;
+import static ru.tandser.todo.UserTestData.nonExistentUser;
+import static ru.tandser.todo.UserTestData.user;
 
 public class NoteRepositoryImplTest extends AbstractRepositoryTest {
 
