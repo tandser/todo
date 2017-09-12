@@ -2,9 +2,11 @@ package ru.tandser.todo.domain;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.google.common.base.MoreObjects;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
+import ru.tandser.todo.jackson.Views;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -56,6 +58,7 @@ public class User extends AbstractEntity {
         this.email = email;
     }
 
+    @JsonView(Views.Rest.class)
     @NotNull
     @Length(min = 7)
     @Column(name = "password")

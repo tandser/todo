@@ -72,4 +72,16 @@ public abstract class AbstractUserController {
         logger.info("{}: toggle({}, {})", principal.getUsername(), id, state);
         userService.toggle(id, state);
     }
+
+    public User profile() {
+        Principal principal = Principal.get();
+        logger.info("{}: profile()", principal.getUsername());
+        return userService.get(principal.getId());
+    }
+
+    public void register(User user) {
+        logger.info("register({})", user);
+        requireNew(user);
+        userService.save(user);
+    }
 }

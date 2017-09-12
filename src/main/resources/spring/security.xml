@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xsi:schemaLocation="http://www.springframework.org/schema/security
+                                 http://www.springframework.org/schema/security/spring-security.xsd
+                                 http://www.springframework.org/schema/beans
+                                 http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <http pattern="/resources/**" security="none"/>
+
+    <http pattern="/rest/**" create-session="stateless">
+        <http-basic/>
+        <intercept-url pattern="/rest/users/**" access="hasRole('ADMIN')"/>
+        <intercept-url pattern="/rest/notes/**" access="isAuthenticated()"/>
+        <csrf disabled="true"/>
+    </http>
+
+    <http>
+        <intercept-url pattern="/login"                   access="isAnonymous()"/>
+        <intercept-url pattern="/users"                   access="hasRole('ADMIN')"/>
+        <intercept-url pattern="/ajax/users/registration" access="isAnonymous()"/>
+        <intercept-url pattern="/ajax/users/profile"      access="isAuthenticated()"/>
+        <intercept-url pattern="/ajax/users/**"           access="hasRole('ADMIN')"/>
+        <intercept-url pattern="/**"                      access="isAuthenticated()"/>
+        <form-login login-page="/login"
+                    login-processing-url="/spring_security_check"
+                    default-target-url="/notes"
+                    authentication-failure-url="/login?error=true"/>
+        <logout logout-success-url="/login"/>
+    </http>
+
+    <authentication-manager>
+        <authentication-provider user-service-ref="userServiceImpl">
+            <password-encoder ref="passwordEncoder"/>
+        </authentication-provider>
+    </authentication-manager>
+
+</beans:beans>
