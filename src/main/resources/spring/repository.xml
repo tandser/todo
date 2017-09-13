@@ -57,6 +57,7 @@
 
         <jdbc:initialize-database data-source="dataSource">
             <jdbc:script location="classpath:ddl/create.ddl"/>
+            <jdbc:script location="classpath:ddl/insert.ddl"/>
         </jdbc:initialize-database>
 
     </beans>
