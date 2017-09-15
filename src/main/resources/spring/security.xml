@@ -9,6 +9,7 @@
                                  http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <http pattern="/resources/**" security="none"/>
+    <http pattern="/webjars/**"   security="none"/>
 
     <http pattern="/rest/**" create-session="stateless">
         <http-basic/>

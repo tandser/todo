@@ -4,7 +4,19 @@
 
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%date{dd-MM-yyyy HH:mm:ss} %highlight(%-4.-4level) %-30.-30logger{0} - %message%n</pattern>
+            <pattern>%date{dd-MM-yyyy HH:mm:ss} %highlight(%-4.-4level) %-32.-32logger{0} - %message%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/logs/todo.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>/logs/todo.%d{yyyy-MM-dd_HH}.%i.zip</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>336</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date{dd-MM-yyyy HH:mm:ss} %-4.-4level %-32.-32logger{0} - %message%n</pattern>
         </encoder>
     </appender>
 
@@ -12,6 +24,7 @@
 
     <root level="info">
         <appender-ref ref="console"/>
+        <appender-ref ref="file"/>
     </root>
 
 </configuration>
